@@ -23,7 +23,6 @@ func promptUntilValid(msg string, value *float64) {
 		if err := prompt(msg, value); err == nil {
 			break
 		}
-		fmt.Println("Некорректный ввод, попробуйте еще раз.")
 	}
 }
 
