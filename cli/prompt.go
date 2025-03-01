@@ -1,19 +1,22 @@
-package main
+package cli
 
 import (
 	"fmt"
 	"strconv"
 )
 
-func getInput() (a, b, c float64) {
-	data := map[string]*float64 {
-		"a = ": &a,
-		"b = ": &b,
-		"c = ": &c,
+func GetInput() (a, b, c float64) {
+	type data struct {
+		msg string
+		value *float64
 	}
-    for msg, value := range data {
-		promptUntilValid(msg, value)
-
+	dataSet := []data{
+        {"a = ", &a},
+        {"b = ", &b},
+        {"c = ", &c},
+	}
+    for _, val := range dataSet {
+		promptUntilValid(val.msg, val.value)
 	}
 	return
 }
@@ -32,7 +35,7 @@ func prompt(msg string, value *float64) error {
 	fmt.Scan(&scanValue)
 	parsedValue, err := strconv.ParseFloat(scanValue, 64)
 	if err != nil {
-		fmt.Println("Error. Expected a valid real number, got invalid instead")
+		fmt.Printf("Error. Expected a valid real number, got %s instead\n", scanValue)
 	}
 	*value = parsedValue
 	return err
