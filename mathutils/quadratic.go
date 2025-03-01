@@ -14,5 +14,5 @@ func SolveQuadratic(a, b, c float64) (roots []float64, hasSolution bool) {
 	return []float64{
 		(-b + sqrtD) / (2 * a),
 		(-b - sqrtD) / (2 * a),
-	}, true 
+	}, true
 }

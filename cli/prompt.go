@@ -7,15 +7,15 @@ import (
 
 func GetInput() (a, b, c float64) {
 	type data struct {
-		msg string
+		msg   string
 		value *float64
 	}
 	dataSet := []data{
-        {"a = ", &a},
-        {"b = ", &b},
-        {"c = ", &c},
+		{"a = ", &a},
+		{"b = ", &b},
+		{"c = ", &c},
 	}
-    for _, val := range dataSet {
+	for _, val := range dataSet {
 		promptUntilValid(val.msg, val.value)
 	}
 	return
