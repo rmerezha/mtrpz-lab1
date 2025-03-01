@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func getInput() (a, b, c float64) {
@@ -27,10 +28,13 @@ func promptUntilValid(msg string, value *float64) {
 }
 
 func prompt(msg string, value *float64) error {
+	var scanValue string
 	fmt.Print(msg)
-	_, err := fmt.Scan(value)
+	fmt.Scan(&scanValue)
+	parsedValue, err := strconv.ParseFloat(scanValue, 64)
 	if err != nil {
 		fmt.Println("Error. Expected a valid real number, got invalid instead")
 	}
+	*value = parsedValue
 	return err
 }
